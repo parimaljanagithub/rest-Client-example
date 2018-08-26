@@ -1,0 +1,5 @@
+step1: Oracle needs to install with db name as XE and user id=system  and password=nest
+step2: run all the sql command inside script file in resource directory
+step 3: download ojdbc 7 jar and add the dependency ino the build path
+step 4: run ParimalIntuitProjectApplication.java file 
+step 5: run the client java code to test all the 7 test case ClientExecution.java

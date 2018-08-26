@@ -1,0 +1,28 @@
+create  table T_intuit_user(
+user_id number(10),
+user_name varchar2(30),
+password varchar2(10),
+login_status varchar2(1)
+);
+--drop table T_intuit_user;
+
+CREATE SEQUENCE INTUIT_USER_SEQ
+ START WITH     1000
+ INCREMENT BY   1
+ NOCACHE
+
+------------------
+--SELECT * FROM T_intuit_user t where user_name='pj';
+create table t_intuit_bank(
+bank_id number(10),
+bank_name varchar2(100),
+account_type varchar2(30),
+account_no number(11),
+corp_id number(20)
+);
+
+
+insert into t_intuit_bank values(1,'sbi','savings',123456,300);
+insert into t_intuit_bank values(2,'hdfc','current',654321,301);
+insert into t_intuit_bank values(3,'hdfc','savings',3322445,303);
+
