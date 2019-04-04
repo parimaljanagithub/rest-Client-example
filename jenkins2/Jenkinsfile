@@ -36,7 +36,11 @@ pipeline {
        script {
        newVersionSTG = open2Utils.getDate()
         if (!params.BUILD_FROM_TAG && params.IS_HOTFIX && (params.INCR_MAJOR_VERSION || param.BRANCH_NAME == 'Develop') ) {
-          error 'Hotfix deployment cannot work with develop branch nor update major version'
+            error 'Hotfix deployment cannot work with develop branch nor update major version'
+        }
+        
+        if (params.BUILD_FROM_TAG) {
+            newVersionSTG = readMavenPom(file: 'pom.xml').getVersion()
         }
         
        }
