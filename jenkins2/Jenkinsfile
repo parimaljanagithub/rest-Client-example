@@ -2,7 +2,7 @@
 default location for Groovy file is inside var or SRC folder
 **/
 @Library('OPEN2') _
-String newVersionSTG
+String newVersionSTG , newTagSTG
 
 pipeline {
  agent any
@@ -43,6 +43,9 @@ pipeline {
             newVersionSTG = readMavenPom(file: 'pom.xml').getVersion()
             echo "inside build from tag pom version is . = "
             echo "${newVersionSTG}"
+          
+             newTagSTG = newVersionSTG.substring(newVersionSTG.indexOf('-', 9) + 1)
+             echo "${newTagSTG}"
            }
           } //script end
        
