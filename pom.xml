@@ -5,7 +5,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>parimalIntuitProject</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>2.0.26-RC1</version>
 	<packaging>jar</packaging>
 
 	<name>parimalIntuitProject</name>
