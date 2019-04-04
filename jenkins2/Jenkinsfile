@@ -1,4 +1,6 @@
 
+String newVersionSTG
+
 pipeline {
  agent any
  parameters {
@@ -25,7 +27,7 @@ pipeline {
        sh "INCR_MAJOR_VERSION=${params.INCR_MAJOR_VERSION} "
        sh "NEVER_TO_PROD=${params.NEVER_TO_PROD} "
        sh "REPO_TYPE=${params.REPO_TYPE} " 
-       open2Utils.getDate()
+       newVersionSTG = open2Utils.getDate()
        
            }
        }
