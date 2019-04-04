@@ -10,7 +10,7 @@ pipeline {
   choice(name: 'REPO_TYPE', choices: 'SNAPSHOT\nRELEASE', description: 'Repository type (usually use SNAPSHOT)')
     }
 environment {
-  DATE = openv2Utils.getDate()
+  String date2 = openv2Utils.getDate()
 }
  stages {
   stage('Stage_one') {
@@ -26,7 +26,8 @@ environment {
        sh "IS_HOTFIX=${params.IS_HOTFIX} "
        sh "INCR_MAJOR_VERSION=${params.INCR_MAJOR_VERSION} "
        sh "NEVER_TO_PROD=${params.NEVER_TO_PROD} "
-       sh "REPO_TYPE=${params.REPO_TYPE} "        
+       sh "REPO_TYPE=${params.REPO_TYPE} "  
+      sh " date2 = ${date2}"
            }
        }
   }
