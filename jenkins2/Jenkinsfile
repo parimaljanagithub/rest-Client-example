@@ -9,9 +9,7 @@ pipeline {
   booleanParam(name: 'NEVER_TO_PROD', defaultValue: false, description: 'Will this deployment never go for PROD?')
   choice(name: 'REPO_TYPE', choices: 'SNAPSHOT\nRELEASE', description: 'Repository type (usually use SNAPSHOT)')
     }
-environment {
-  String date2 = openv2Utils.getDate()
-}
+
  stages {
   stage('Stage_one') {
      steps {
@@ -26,8 +24,9 @@ environment {
        sh "IS_HOTFIX=${params.IS_HOTFIX} "
        sh "INCR_MAJOR_VERSION=${params.INCR_MAJOR_VERSION} "
        sh "NEVER_TO_PROD=${params.NEVER_TO_PROD} "
-       sh "REPO_TYPE=${params.REPO_TYPE} "  
-      sh " date2 = ${date2}"
+       sh "REPO_TYPE=${params.REPO_TYPE} " 
+       openv2Utils.getDate()
+       
            }
        }
   }
