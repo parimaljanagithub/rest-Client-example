@@ -24,7 +24,7 @@ pipeline {
                 )
             }
      }
-   stage('stage_two') {
+   stage('[STG] Build Artifact') {
      steps {
        echo 'inside stage two and step 1'
        sh "BRANCH_NAME=${params.BRANCH_NAME} "
@@ -35,6 +35,10 @@ pipeline {
        sh "REPO_TYPE=${params.REPO_TYPE} " 
        script {
        newVersionSTG = open2Utils.getDate()
+        if (!params.BUILD_FROM_TAG && params.IS_HOTFIX && (params.INCR_MAJOR_VERSION || param.BRANCH_NAME == 'Develop') ) {
+          error 'Hotfix deployment cannot work with develop branch nor update major version'
+        }
+        
        }
        
            }
