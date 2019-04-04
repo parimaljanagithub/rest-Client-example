@@ -42,7 +42,7 @@ pipeline {
          if (params.BUILD_FROM_TAG) {
             newVersionSTG = readMavenPom(file: 'pom.xml').getVersion()
             echo "inside build from tag pom version is . = "
-            echo $newVersionSTG
+            echo "${newVersionSTG}"
            }
           } //script end
        
