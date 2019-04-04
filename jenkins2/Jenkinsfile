@@ -41,6 +41,7 @@ pipeline {
         
          if (params.BUILD_FROM_TAG) {
             newVersionSTG = readMavenPom(file: 'pom.xml').getVersion()
+            echo $newVersionSTG
            }
           } //script end
        
