@@ -9,6 +9,9 @@ pipeline {
   booleanParam(name: 'NEVER_TO_PROD', defaultValue: false, description: 'Will this deployment never go for PROD?')
   choice(name: 'REPO_TYPE', choices: 'SNAPSHOT\nRELEASE', description: 'Repository type (usually use SNAPSHOT)')
     }
+environment {
+  DATE = openv2Utils.getDate()
+}
  stages {
   stage('Stage_one') {
      steps {
