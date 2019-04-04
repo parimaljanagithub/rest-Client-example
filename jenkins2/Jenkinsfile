@@ -1,3 +1,6 @@
+/**
+default location for Groovy file is inside var or SRC folder
+**/
 @Library('OPEN2') _
 String newVersionSTG
 
@@ -13,9 +16,12 @@ pipeline {
     }
 
  stages {
-  stage('Stage_one') {
+  stage('[STG] Check Frodo') {
      steps {
-       echo 'inside stage one and step one'
+       input(
+                        message: 'Please make sure the useless instances already suspended/deleted.',
+                        ok: 'Yes, I have checked, let\'s go!'
+                )
             }
      }
    stage('stage_two') {
