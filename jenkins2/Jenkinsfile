@@ -1,4 +1,4 @@
-
+@Library('OPEN2') _
 String newVersionSTG
 
 pipeline {
