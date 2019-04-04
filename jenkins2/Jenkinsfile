@@ -18,7 +18,7 @@ pipeline {
    stage('stage_two') {
      steps {
        echo 'inside stage two and step 1'
-       sh 'echo $params.BUILD_FROM_TAG'
+       sh 'echo "$params.BUILD_FROM_TAG"'
            }
        }
   }
