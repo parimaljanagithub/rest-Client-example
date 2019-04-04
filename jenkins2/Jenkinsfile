@@ -18,12 +18,12 @@ pipeline {
    stage('stage_two') {
      steps {
        echo 'inside stage two and step 1'
-       sh "BRANCH_NAME = ${params.BUILD_FROM_TAG}"
-       sh "BUILD_FROM_TAG = ${param.BUILD_FROM_TAG}"
+       sh " echo "BRANCH_NAME = ${params.BUILD_FROM_TAG}" "
+       /*sh "BUILD_FROM_TAG = ${param.BUILD_FROM_TAG}"
        sh "IS_HOTFIX = ${param.IS_HOTFIX}"
        sh "INCR_MAJOR_VERSION = ${param.INCR_MAJOR_VERSION}"
        sh "NEVER_TO_PROD = ${param.NEVER_TO_PROD}"
-       sh "REPO_TYPE = ${param.REPO_TYPE}"       
+       sh "REPO_TYPE = ${param.REPO_TYPE}"       */ 
            }
        }
   }
