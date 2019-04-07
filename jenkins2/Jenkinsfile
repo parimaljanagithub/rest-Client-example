@@ -43,8 +43,8 @@ pipeline {
             newVersionSTG = readMavenPom(file: 'pom.xml').getVersion()
             echo "inside build from tag pom version is . = "
             echo "${newVersionSTG}"
-            String d = open2Utils.getDate()
-            echo ${d}
+            String d22 = open2Utils.getDate()
+          //  echo ${d}
           
              newTagSTG = newVersionSTG.substring(newVersionSTG.indexOf('-', 9) + 1)
              echo "${newTagSTG}"
@@ -53,7 +53,7 @@ pipeline {
             
             
            //git operation
-           sh "git pull --rebase origin ${params.BRANCH_NAME}"
+          // sh "git pull --rebase origin ${params.BRANCH_NAME}"
         
         
           } //script end
