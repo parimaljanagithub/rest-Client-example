@@ -40,10 +40,11 @@ pipeline {
            }
         
          if (params.BUILD_FROM_TAG) {
-            newVersionSTG = open2Utils.getPomVersion()
-             //readMavenPom(file: 'pom.xml').getVersion()
+            newVersionSTG = readMavenPom(file: 'pom.xml').getVersion()
             echo "inside build from tag pom version is . = "
             echo "${newVersionSTG}"
+            String d = open2Utils.getDate()
+            echo ${d}
           
              newTagSTG = newVersionSTG.substring(newVersionSTG.indexOf('-', 9) + 1)
              echo "${newTagSTG}"
