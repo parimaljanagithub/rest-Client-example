@@ -44,7 +44,7 @@ pipeline {
             echo "inside build from tag pom version is . = "
             echo "${newVersionSTG}"
             String d22 = open2Utils.getDate()
-          //  echo ${d}
+            echo $d22
           
              newTagSTG = newVersionSTG.substring(newVersionSTG.indexOf('-', 9) + 1)
              echo "${newTagSTG}"
