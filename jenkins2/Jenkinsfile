@@ -40,7 +40,8 @@ pipeline {
            }
         
          if (params.BUILD_FROM_TAG) {
-            newVersionSTG = readMavenPom(file: 'pom.xml').getVersion()
+            newVersionSTG = open2Utils.getPomVersion()
+             //readMavenPom(file: 'pom.xml').getVersion()
             echo "inside build from tag pom version is . = "
             echo "${newVersionSTG}"
           
@@ -48,7 +49,7 @@ pipeline {
              echo "${newTagSTG}"
            }
         
-            echo $JENKINS_HOME
+            
             
            //git operation
            sh "git pull --rebase origin ${params.BRANCH_NAME}"
