@@ -47,6 +47,11 @@ pipeline {
              newTagSTG = newVersionSTG.substring(newVersionSTG.indexOf('-', 9) + 1)
              echo "${newTagSTG}"
            }
+        
+           //git operation
+           sh "git pull --rebase origin ${params.BRANCH_NAME}"
+        
+        
           } //script end
        
          } //step end
