@@ -48,6 +48,8 @@ pipeline {
              echo "${newTagSTG}"
            }
         
+            echo $JENKINS_HOME
+            
            //git operation
            sh "git pull --rebase origin ${params.BRANCH_NAME}"
         
