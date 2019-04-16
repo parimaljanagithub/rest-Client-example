@@ -46,7 +46,7 @@ pipeline {
             String d22 = open2Utils.getDate()
             echo "${d22}"
           
-             newTagSTG = newVersionSTG.substring(newVersionSTG.indexOf('-', 8) + 1)
+             newTagSTG = newVersionSTG.substring(newVersionSTG.indexOf('-', 5) + 1)
              echo "${newTagSTG}"
            }
         
