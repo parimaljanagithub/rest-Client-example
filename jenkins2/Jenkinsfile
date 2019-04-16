@@ -46,7 +46,7 @@ pipeline {
             String d22 = open2Utils.getDate()
             echo "${d22}"
           
-             newTagSTG = newVersionSTG.substring(newVersionSTG.indexOf('-', 9) + 1)
+             newTagSTG = newVersionSTG.substring(newVersionSTG.indexOf('-', 8) + 1)
              echo "${newTagSTG}"
            }
         
@@ -57,6 +57,10 @@ pipeline {
         sh "git config --global user.name parimal"
         sh "git config --global user.name janaparimal.jana@gmail.com "
         sh "git fetch -p origin ${params.BRANCH_NAME}"
+        
+        //now checkout the branch and update the pom version
+         sh "git checkout -f ${params.BRANCH_NAME}"
+       //  sh "mvn -DskipTests versions:set -DgenerateBackupPoms=false -DnewVersion=${newVersionSTG}"
         
         
           } //script end
