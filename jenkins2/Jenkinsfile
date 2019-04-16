@@ -48,6 +48,9 @@ pipeline {
           
              newTagSTG = newVersionSTG.substring(newVersionSTG.indexOf('C', 5) + 1)
              echo "${newTagSTG}"
+             newVersionSTG = open2Utils.increaseVersion(newTagSTG)
+              echo "${newVersionSTG}"
+          
            }
         
             
