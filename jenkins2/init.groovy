@@ -17,8 +17,11 @@ instance.setCrumbIssuer(new DefaultCrumbIssuer(true))
 
 def hudsonRealm = new HudsonPrivateSecurityRealm(false)
 
-//Credentials
-//TODO inform your credentials here, changing user and password
-Credentials c = (Credentials) new UsernamePasswordCredentialsImpl(CredentialsScope.GLOBAL,"git_openapiv2", "openapiv2","janaparimal.jana@gmail.com","India@2019")
-SystemCredentialsProvider.getInstance().getStore().addCredentials(Domain.global(), c)
+//**********
+def dis = new hudson.model.JDK.DescriptorImpl();
+dis.setInstallations( new hudson.model.JDK("JDK8", "/usr/lib/jvm/java-1.8-openjdk"));
 
+def desc = instance.getDescriptor("hudson.tasks.Maven")
+def minst =  new hudson.tasks.Maven.MavenInstallation("Maven", "/usr/lib/mvn");
+desc.setInstallations(minst)
+desc.save()
