@@ -46,10 +46,12 @@ pipeline {
             String d22 = open2Utils.getDate()
             echo "${d22}"
           
-             newTagSTG = newVersionSTG.substring(newVersionSTG.indexOf('C', 5) + 1)
-             echo "${newTagSTG}"
-             newVersionSTG = newVersionSTG.substring(0,newVersionSTG.indexOf('R')) + open2Utils.increaseVersion(newTagSTG)
-              echo "${newVersionSTG}"
+             String vNo = newVersionSTG.substring(newVersionSTG.indexOf('C', 5) + 1)
+             echo "${vNo}"
+             newVersionSTG = newVersionSTG.substring(0,newVersionSTG.indexOf('R')) + open2Utils.increaseVersion(vNo)
+             echo "${newVersionSTG}"
+              
+             newTagSTG = "new deploy qa -" + d22 + "-" + newVersionSTG 
           
            }
         
@@ -63,7 +65,12 @@ pipeline {
         
         //now checkout the branch and update the pom version
          sh "git checkout -f ${params.BRANCH_NAME}"
-       //  sh "mvn -DskipTests versions:set -DgenerateBackupPoms=false -DnewVersion=${newVersionSTG}"
+         sh "mvn -DskipTests versions:set -DgenerateBackupPoms=false -DnewVersion=${newVersionSTG}"
+         sh 'git add -u'
+         sh "git commit -m \"New deploy ${newTagSTG}\""
+         sh "git tag ${newTagSTG}"
+         sh "git push --tags"  // Push tag
+         sh "git push origin ${params.BRANCH_NAME}"
         
         
           } //script end
