@@ -8,7 +8,7 @@ String getPomVersion() {
 }
 
 String increaseVersion(String version) {
-    version.toInteger() + 1 
+   // version.toInteger() + 1 
     println(version)
     return version
 }
