@@ -53,7 +53,8 @@ pipeline {
             
             
            //git operation
-           sh "git pull ${params.BRANCH_NAME}"
+          // sh "git pull ${params.BRANCH_NAME}"
+        sh "git pull --rebase origin ${params.BRANCH_NAME}"
         
         
           } //script end
