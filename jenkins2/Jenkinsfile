@@ -54,6 +54,7 @@ pipeline {
             
            //git operation
           // sh "git pull ${params.BRANCH_NAME}"
+        sh "git config --global user.name "parimal" "
         sh "git pull --rebase origin ${params.BRANCH_NAME}"
         
         
