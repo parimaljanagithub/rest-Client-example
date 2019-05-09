@@ -14,6 +14,9 @@ pipeline {
   booleanParam(name: 'NEVER_TO_PROD', defaultValue: false, description: 'Will this deployment never go for PROD?')
   choice(name: 'REPO_TYPE', choices: 'SNAPSHOT\nRELEASE', description: 'Repository type (usually use SNAPSHOT)')
     }
+  environment {
+   NOTIFICATION_RECIPIENTS = 'parimaljana10@gmail.com'
+  }
 
  stages {
   stage('[STG] Check Frodo') {
@@ -77,5 +80,31 @@ pipeline {
        
          } //step end
        }
-  }
+  }//stage  end
+ // for production 
+ 
+ stage('Promote to Production') {
+            when { expression { return !params.NEVER_TO_PROD } }
+            steps {
+                timeout(time: 7, unit: 'DAYS') {
+                    script {
+                        promoteToPROD = openv2Utils.userInputWithComment("Let's deploy the OpenAPI ${newVersionSTG} to PROD?")
+                        String subject, body
+                        if (promoteToPROD) {
+                            subject = "Promoted to Production Build #${env.JOB_NAME}-${env.BUILD_NUMBER}"
+                            body = "OpenAPI ${newVersionSTG} has started to deploy to PROD, check at here ${env.BUILD_URL}"
+                        } else {
+                            subject = "Denied to Production Build #${env.JOB_NAME}-${env.BUILD_NUMBER}"
+                            body = "OpenAPI ${newVersionSTG} was denied to deploy to PROD, check at here ${env.BUILD_URL}"
+                        }
+                        mail subject: subject,
+                                body: body,
+                                to: NOTIFICATION_RECIPIENTS,
+                                replyTo: NOTIFICATION_RECIPIENTS,
+                                from: 'jenkins@import-jenkins-stg'
+                    }
+                }
+            }
+        }
+ 
 }
