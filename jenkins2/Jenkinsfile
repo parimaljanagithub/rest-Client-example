@@ -89,7 +89,7 @@ pipeline {
             steps {
                 timeout(time: 7, unit: 'DAYS') {
                     script {
-                        promoteToPROD = openv2Utils.userInputWithComment("Let's deploy the OpenAPI  to PROD?")
+                        promoteToPROD = open2Utils.userInputWithComment("Let's deploy the OpenAPI  to PROD?")
                         String subject, body
                         if (promoteToPROD) {
                             subject = "Promoted to Production Build "
