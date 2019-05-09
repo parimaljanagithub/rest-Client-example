@@ -89,20 +89,16 @@ pipeline {
             steps {
                 timeout(time: 7, unit: 'DAYS') {
                     script {
-                        promoteToPROD = openv2Utils.userInputWithComment("Let's deploy the OpenAPI ${newVersionSTG} to PROD?")
+                        promoteToPROD = openv2Utils.userInputWithComment("Let's deploy the OpenAPI  to PROD?")
                         String subject, body
                         if (promoteToPROD) {
-                            subject = "Promoted to Production Build #${env.JOB_NAME}-${env.BUILD_NUMBER}"
-                            body = "OpenAPI ${newVersionSTG} has started to deploy to PROD, check at here ${env.BUILD_URL}"
+                            subject = "Promoted to Production Build "
+                            body = "OpenAPI ${newVersionSTG} has started to deploy to PROD, check at here "
                         } else {
-                            subject = "Denied to Production Build #${env.JOB_NAME}-${env.BUILD_NUMBER}"
-                            body = "OpenAPI ${newVersionSTG} was denied to deploy to PROD, check at here ${env.BUILD_URL}"
+                            subject = "Denied to Production Build "
+                            body = "OpenAPI  was denied to deploy to PROD, check at here"
                         }
-                        mail subject: subject,
-                                body: body,
-                                to: NOTIFICATION_RECIPIENTS,
-                                replyTo: NOTIFICATION_RECIPIENTS,
-                                from: 'jenkins@import-jenkins-stg'
+                       
                     }
                 }
             }
