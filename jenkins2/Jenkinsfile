@@ -65,12 +65,12 @@ pipeline {
         
         //now checkout the branch and update the pom version
          sh "git checkout -f ${params.BRANCH_NAME}"
-         sh "mvn -DskipTests versions:set -DgenerateBackupPoms=false -DnewVersion=${newVersionSTG}"
-         sh 'git add -u'
-         sh "git commit -m \"New deploy ${newTagSTG}\""
-         sh "git tag ${newTagSTG}"
-         sh "git push --tags"  // Push tag
-         sh "git push origin ${params.BRANCH_NAME}"
+       //  sh "mvn -DskipTests versions:set -DgenerateBackupPoms=false -DnewVersion=${newVersionSTG}"
+       //  sh 'git add -u'
+        // sh "git commit -m \"New deploy ${newTagSTG}\""
+       //  sh "git tag ${newTagSTG}"
+       //  sh "git push --tags"  // Push tag
+       //  sh "git push origin ${params.BRANCH_NAME}"
         
         
           } //script end
