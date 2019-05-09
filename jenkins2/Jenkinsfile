@@ -93,7 +93,7 @@ pipeline {
                         String subject, body
                         if (promoteToPROD) {
                             subject = "Promoted to Production Build "
-                            body = "OpenAPI ${newVersionSTG} has started to deploy to PROD, check at here "
+                            body = "OpenAPI  has started to deploy to PROD, check at here "
                         } else {
                             subject = "Denied to Production Build "
                             body = "OpenAPI  was denied to deploy to PROD, check at here"
